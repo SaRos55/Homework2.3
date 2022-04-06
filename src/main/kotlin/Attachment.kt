@@ -5,27 +5,27 @@ interface Attachment {
     val content: Content
 }
 
-class AudioAttachment : Attachment {
-    override val type = "audio"
-    override val content = Audio()
-}
+data class AudioAttachment(
+    override val type: String = "audio",
+    override val content: Audio = Audio()
+) : Attachment
 
-class VideoAttachment : Attachment {
-    override val type = "video"
-    override val content = Video()
-}
+data class VideoAttachment(
+    override val type: String = "video",
+    override val content: Video = Video()
+) : Attachment
 
-class ImageAttachment : Attachment {
-    override val type = "image"
-    override val content = Image()
-}
+data class ImageAttachment(
+    override val type: String = "image",
+    override val content: Image = Image()
+) : Attachment
 
-class PhotoAttachment : Attachment {
-    override val type = "photo"
-    override val content = Photo()
-}
+data class PhotoAttachment(
+    override val type: String = "photo",
+    override val content: Photo = Photo()
+) : Attachment
 
-class LinkAttachment : Attachment {
-    override val type = "Link"
-    override val content = Link()
-}
+data class LinkAttachment(
+    override val type: String = "link",
+    override val content: Link = Link()
+) : Attachment

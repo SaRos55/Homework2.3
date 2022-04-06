@@ -1,3 +1,6 @@
+import content.Audio
+import content.Image
+import content.Video
 import org.junit.Test
 
 import org.junit.Assert.*

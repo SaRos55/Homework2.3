@@ -1,3 +1,5 @@
+import content.*
+
 fun main() {
 
     val post = Post(
