@@ -92,6 +92,7 @@ class Donut(
 //object WallService {
 class WallService {
     private var posts = emptyArray<Post>()
+    private var comments = emptyArray<Comment>()
     private var id: Int = 0
 
     fun add(post: Post): Post {
@@ -109,5 +110,21 @@ class WallService {
             }
         }
         return false
+    }
+
+    fun createComment(comment: Comment): String {
+        var itPost = false
+        val id = comment.postId
+        for (post in posts) {
+            if (post.id == id) {
+                itPost = true
+            }
+        }
+        if (itPost) {
+            comments += comment
+            return "Комментарий успешно добавлен"
+        } else {
+            throw PostNotFoundException ("no post with id $id")
+        }
     }
 }

@@ -314,4 +314,83 @@ class WallServiceTest {
         val result = service.update(update)
         assertFalse(result)
     }
+
+    @Test
+    fun createCommentSuccessfully() {
+        val serviceTest = WallService()
+        serviceTest.add(
+            Post(
+                10,
+                0,
+                0,
+                0,
+                0,
+                "",
+                0,
+                0,
+                false,
+                Comments(0, canPost = false, groupsCanPost = false, canClose = false, canOpen = false),
+                Copyright(0, "", "", ""),
+                Likes(0, userLikes = false, canLike = false, canPublish = false),
+                Reposts(0, false),
+                Views(0),
+                "",
+                0,
+                canPin = false,
+                canDelete = false,
+                canEdit = false,
+                isPinned = false,
+                markedAsAds = false,
+                false,
+                Donut(false, 0, false, ""),
+                0,
+                arrayOf(VideoAttachment()),
+                PostSource(),
+                null,
+                null
+            )
+        )
+        val actual = serviceTest.createComment(Comment(1,"Тест"))
+        val expected = "Комментарий успешно добавлен"
+        assertEquals(actual, expected)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        val serviceTest = WallService()
+        serviceTest.add(
+            Post(
+                10,
+                0,
+                0,
+                0,
+                0,
+                "",
+                0,
+                0,
+                false,
+                Comments(0, canPost = false, groupsCanPost = false, canClose = false, canOpen = false),
+                Copyright(0, "", "", ""),
+                Likes(0, userLikes = false, canLike = false, canPublish = false),
+                Reposts(0, false),
+                Views(0),
+                "",
+                0,
+                canPin = false,
+                canDelete = false,
+                canEdit = false,
+                isPinned = false,
+                markedAsAds = false,
+                false,
+                Donut(false, 0, false, ""),
+                0,
+                arrayOf(VideoAttachment()),
+                PostSource(),
+                null,
+                null
+            )
+        )
+        serviceTest.createComment(Comment(2,"Тест"))
+    }
+
 }
